@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập JS Buổi 7 và 8</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+</head>
+<body>
+    <section class="container-md">
+        <h2>Bài tập JS Buổi 7 và 8</h2>
+        <p>Tạo 1 mảng mong muốn</p>
+        <div class="form-group my-2">
+            <input type="number" class="form-control" placeholder="Nhập vào 1 số bất kì" id="so" >
+        </div>
+        <button class="btn btn-success mb-2" onclick="themMang()">Thêm vào mảng</button><br>
+        <span>Mảng ban đầu: </span>
+        <!-- <input type="text" class="alert alert-primary" id="mang"> -->
+        <div id="mang"></div>
+        <div class="form-group">
+            <h4>Chọn chức năng xử lý</h4>
+            <select name="chonXuLy" id="chonXuLy" class="my-2 form-control" onclick="chonChucNang()">
+                <option value= 1 selected>1.Tổng số dương</option>
+                <option value= 2>2.Đếm số dương</option>
+                <option value= 3>3.Tìm số nhỏ nhất</option>
+                <option value= 4>4.Tìm số dương nhỏ nhất</option>
+                <option value= 5>5.Tìm số chẵn cuối cùng</option>
+                <option value= 6>6.Đổi vị trí</option>
+                <option value= 7>7.Sắp xếp mảng tăng dần</option>
+                <option value= 8>8.Tìm số nguyên tố đầu tiên</option>
+                <option value= 9>9.Nhập thêm 1 mảng số thực, tìm xem trong mảng có bao nhiêu số nguyên</option>
+                <option value= 10>10.So sánh số lượng âm và dương</option>
+            </select>
+        </div>
+        <div class="form-group my-2" id="ketQua">
+        
+        </div>
+        <!-- Tổng số dương trong mảng -->
+        <div class="form-group" id="tongDuong" style="display: none;">
+            <button class="btn btn-success mr-2" onclick="tongSoDuong()" id="tongSoDuong">Tổng số dương</button>
+            <div type="text" class="alert alert-primary my-2" id="ketQua1"></div>
+        </div>
+
+        <!-- Đếm số dương trong mảng -->
+        <div class="form-group" id="demDuong" style="display: none;">
+            <button class="btn btn-success mr-2" onclick="demSoDuong()" id="demSoDuong">Đếm số dương</button>
+            <div type="text" class="alert alert-primary my-2" id="ketQua2"></div>
+        </div>
+
+        <!-- Tìm min trong mảng -->
+        <div class="form-group" id="timMin" style="display: none;">
+            <button class="btn btn-success mr-2" onclick="timMin()" id="timSoMin">Tìm số nhỏ nhất</button>
+            <div type="text" class="alert alert-primary my-2" id="ketQua3"></div>
+        </div>
+
+        <!-- Tìm min dương trong mảng -->
+        <div class="form-group" id="timMinDuong" style="display: none;">
+            <button class="btn btn-success mr-2" onclick="timMinDuong()" id="timSoMinDuong">Tìm số dương nhỏ nhất</button>
+            <div type="text" class="alert alert-primary my-2" id="ketQua4"></div>
+        </div>
+
+        <!-- Tìm số chẵn cuối cùng -->
+        <div class="form-group" id="timChan" style="display: none;">
+            <button class="btn btn-success mr-2" onclick="timChan()" id="timSoChan">Tìm số chẵn cuối cùng</button>
+            <div type="text" class="alert alert-primary my-2" id="ketQua5"></div>
+        </div>
+
+        <!-- Đổi vị trí -->
+        <div class="form-group" id="doi" style="display: none;">
+            <div class="row form-group">
+                <div class="col-2">
+                    <input type="number" class="alert alert-primary text-dark" id="so1" placeholder="Nhập vị trí thứ 1">
+                </div>
+                <div class="col-2">
+                    <input type="number" class="alert alert-primary text-dark" id="so2" placeholder="Nhập vị trí thứ 2">
+                </div>
+            </div>
+            <button class="btn btn-success mr-2" onclick="doiViTri()" id="doiViTri">Đổi vị trí</button>
+            <div class="alert alert-primary my-2" id="ketQua6"></div>
+        </div>
+
+        <!-- Sắp xếp mảng tăng dần -->
+        <div class="form-group" id="sapXep" style="display: none;">
+            <button class="btn btn-success mr-2" onclick="sapXep()" id="sapXepMang">Sắp xếp mảng tăng dần</button>
+            <div type="text" class="alert alert-primary my-2" id="ketQua7"></div>
+        </div>
+        
+        <!-- Tìm số nguyên tố đầu tiên -->
+        <div class="form-group" id="soNT" style="display: none;">
+            <button class="btn btn-success mr-2" onclick="soNT()" id="soNguyenTo">Tìm số nguyên tố</button>
+            <div type="text" class="alert alert-primary my-2" id="ketQua8"></div>
+        </div>
+        
+        <!-- Nhập thêm 1 mảng số thực, tìm xem trong mảng có bao nhiêu số nguyên -->
+        <div class="form-group" id="soNg" style="display: none;">
+            <input type="number" class="form-control mb-2" placeholder="Nhập vào 1 số bất kì" id="soMoi" >
+            <button class="btn btn-success mb-2" onclick="themMangMoi()">Thêm vào mảng</button><br>
+            <span>Mảng mới: </span>
+            <div id="mang1"></div><br>
+            <button class="btn btn-success mr-2" onclick="soNguyen()" id="soNguyen">Đếm số nguyên</button>
+            <div type="text" class="alert alert-primary my-2" id="ketQua9"></div>
+        </div>
+
+        <!-- So sánh số lượng âm và dương -->
+        <div class="form-group" id="soSanh" style="display: none;">
+            <button class="btn btn-success mr-2" onclick="soSanhMang()" id="soSanhMang">So Sánh</button>
+            <div type="text" class="alert alert-primary my-2" id="ketQua10"></div>
+        </div>
+
+    </section>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <script src="./js/index.js"></script>
+</body>
+</html>
